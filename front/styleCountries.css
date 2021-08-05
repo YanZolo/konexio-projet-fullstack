@@ -1,5 +1,32 @@
-#container{
-    width: 50px;
-    height: 30px;    
-    color: black;
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 1.3em;
 }
+#btnShowData{
+    display: block;
+    margin-top: 100px;
+    margin-left: 20px;
+    width: 200px;
+    cursor: pointer;
+}
+#btnReset, #btnSearch {
+    display: block;
+    margin-top: 5px;
+    margin-left: 20px;
+    width: 200px;
+    cursor: pointer;
+}
+ul {
+    padding: 0;
+    margin: 20px 20px;
+}
+li {
+    
+    list-style-type: none; 
+    padding: 5px;    
+    border: 1px solid #8f8f8f;
+    border-radius: 2px;
+    width: 48%;
+}
+

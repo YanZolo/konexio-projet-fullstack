@@ -1,3 +1,4 @@
+let countries = "";
 
 $(function(){
 
@@ -13,10 +14,18 @@ $(function(){
 
 function getAllCountries(data, status, response) {
     
-    console.log(response)
-    console.log(data)
-    $("#ul").html(data)
+    let dataJson = data;
+    for(let i = 0; i < dataJson.length; i++) {
+        countries += `<li>${dataJson[i]} </li>`;
+    } 
+    $("#list").html(countries)
+    console.log("uploaded countries data with success")
 }
+
+
+
+
+
 
 // document.addEventListener("DOMContentLoaded", function () {
 
