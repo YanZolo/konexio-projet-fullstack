@@ -4,7 +4,7 @@ let inputValue = "";
 
 $(function () {
     $("#btnShowData").click(function () {
-        $("#list").css("display", "block");
+        $("#listCounties").css("display", "block");
         $.ajax({
             url: "http://localhost:8000/all",
             success: getAllCountries
@@ -12,23 +12,24 @@ $(function () {
     });
 
     $("#btnReset").click(function () {
-        $("#list").css("display", "none");
+        $("#listCounties").css("display", "none");
         $("#infosCountry").css("display", "none");
         listCountries = "";
         listInfosCountries = "";
         inputValue = "";
-
     });
 
     $("#btnSearch").click(function () {
 
-
         inputValue = $("#inputSearch").val();
-        $.ajax({
-            url: "http://localhost:8000/" + inputValue,
-            success: getCountry
-        });        
-
+        if (inputValue === "") {
+            $("#inputSearch").attr("placeholder","enter a country name");
+        } else {
+            $.ajax({
+                url: "http://localhost:8000/" + inputValue,
+                success: getCountry
+            });
+        }
     });
 
 
@@ -39,14 +40,14 @@ function getAllCountries(data, status, response) {
     for (let i = 0; i < dataJson.length; i++) {
         listCountries += `<li>${dataJson[i]} </li>`;
     }
-    $("#list").html(listCountries);
-    $("#list").css("display", "block");
+    $("#listCounties").html(listCountries);
+    $("#listCounties").css("display", "block");
     console.log("uploaded countries data with success");
 }
 
 function getCountry(data, status, response) {
     let dataJson = data;
-    listInfosCountries += `<li>${dataJson}</li>`
+    listInfosCountries = `<li>${dataJson}</li>`
     $("#infosCountry").html(listInfosCountries)
     $("#infosCountry").css("display", "block");
     console.log("uploaded country data with success")
@@ -78,8 +79,6 @@ function getCountry(data, status, response) {
 //         request.onerror = function () {
 //             console.log('error connection')
 //         };
-
 //         request.send();
 //     });
-
 // });
