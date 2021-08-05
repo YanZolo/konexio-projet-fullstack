@@ -1,25 +1,55 @@
-let countries = "";
+let listCountries = "";
+let listInfosCountries = "";
+let inputValue = "";
 
-$(function(){
-
-    $("#btnShowData").click(function(){
+$(function () {
+    $("#btnShowData").click(function () {
+        $("#list").css("display", "block");
         $.ajax({
             url: "http://localhost:8000/all",
-            success : getAllCountries
+            success: getAllCountries
         });
+    });
 
-    })
+    $("#btnReset").click(function () {
+        $("#list").css("display", "none");
+        $("#infosCountry").css("display", "none");
+        listCountries = "";
+        listInfosCountries = "";
+        inputValue = "";
+
+    });
+
+    $("#btnSearch").click(function () {
+
+
+        inputValue = $("#inputSearch").val();
+        $.ajax({
+            url: "http://localhost:8000/" + inputValue,
+            success: getCountry
+        });        
+
+    });
+
 
 })
-
 function getAllCountries(data, status, response) {
-    
+
     let dataJson = data;
-    for(let i = 0; i < dataJson.length; i++) {
-        countries += `<li>${dataJson[i]} </li>`;
-    } 
-    $("#list").html(countries)
-    console.log("uploaded countries data with success")
+    for (let i = 0; i < dataJson.length; i++) {
+        listCountries += `<li>${dataJson[i]} </li>`;
+    }
+    $("#list").html(listCountries);
+    $("#list").css("display", "block");
+    console.log("uploaded countries data with success");
+}
+
+function getCountry(data, status, response) {
+    let dataJson = data;
+    listInfosCountries += `<li>${dataJson}</li>`
+    $("#infosCountry").html(listInfosCountries)
+    $("#infosCountry").css("display", "block");
+    console.log("uploaded country data with success")
 }
 
 
