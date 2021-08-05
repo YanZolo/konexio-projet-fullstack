@@ -2,7 +2,8 @@ const dataCountries = require("./countriesData");
 const express= require("express");
 const app = express();
 const port = 8000;
-
+let cors = require('cors')
+app.use(cors())
 let countriesArray = [];
 
 

@@ -13,11 +13,9 @@ $(function(){
 
 function getAllCountries(data, status, response) {
     
-    console.log(JSON.parse(data[0].name))
     console.log(response)
     console.log(data)
-    let dataC = response[0].name
-    $("#container").html(dataC)
+    $("#ul").html(data)
 }
 
 // document.addEventListener("DOMContentLoaded", function () {
