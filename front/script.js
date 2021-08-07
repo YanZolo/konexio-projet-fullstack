@@ -4,7 +4,7 @@ let inputValue = "";
 
 $(function () {
     $("#btnShowData").click(function () {
-        $("#listCounties").css("display", "block");
+        $("#listCountries").css("display", "block");
         $.ajax({
             url: "http://localhost:8000/all",
             success: getAllCountries
@@ -12,7 +12,7 @@ $(function () {
     });
 
     $("#btnReset").click(function () {
-        $("#listCounties").css("display", "none");
+        $("#listCountries").css("display", "none");
         $("#infosCountry").css("display", "none");
         listCountries = "";
         listInfosCountries = "";
@@ -40,8 +40,8 @@ function getAllCountries(data, status, response) {
     for (let i = 0; i < dataJson.length; i++) {
         listCountries += `<li>${dataJson[i]} </li>`;
     }
-    $("#listCounties").html(listCountries);
-    $("#listCounties").css("display", "block");
+    $("#listCountries").html(listCountries);
+    $("#listCountries").css("display", "block");
     console.log("uploaded countries data with success");
 }
 
